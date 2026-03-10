@@ -1,8 +1,4 @@
-# .github/workflows/deploy.yml
 name: 部署到 GitHub Pages
-run: pnpm exec nuxt build --preset github_pages
-env:
-    NUXT_APP_BASE_URL: /${{ github.event.repository.name }}/
 on:
   workflow_dispatch:
   push:
@@ -13,21 +9,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      # 启用 corepack，以便使用 pnpm
       - run: corepack enable
-
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          # 添加 pnpm 缓存，加速后续安装
+          node-version: '20'
           cache: 'pnpm'
-
-      # 使用 pnpm 安装依赖
       - run: pnpm install
 
-      # 使用 pnpm exec 运行本地安装的 nuxt 命令
-      - run: pnpm exec nuxt build --preset github_pages
+      # 关键修改：设置环境变量 NUXT_APP_BASE_URL
+      - name: 构建
+        run: pnpm exec nuxt build --preset github_pages
+        env:
+          NUXT_APP_BASE_URL: /${{ github.event.repository.name }}/
 
       - name: 上传构建产物
         uses: actions/upload-pages-artifact@v3
