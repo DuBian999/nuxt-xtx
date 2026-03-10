@@ -1,44 +1,46 @@
-name: Deploy to GitHub Pages
-
+# .github/workflows/deploy.yml
+name: 部署到 GitHub Pages
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
-
-permissions:
-  contents: write
-
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      # 启用 corepack，以便使用 pnpm
+      - run: corepack enable
+
+      - uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: "20"
+          # 添加 pnpm 缓存，加速后续安装
+          cache: 'pnpm'
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      # 使用 pnpm 安装依赖
+      - run: pnpm install
+
+      # 使用 pnpm exec 运行本地安装的 nuxt 命令
+      - run: pnpm exec nuxt build --preset github_pages
+
+      - name: 上传构建产物
+        uses: actions/upload-pages-artifact@v3
         with:
-          version: 10
+          path: ./.output/public
 
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Generate static site
-        run: pnpm run generate # 使用 generate 命令生成静态站点
-
-      - name: Deploy to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist # Nuxt generate 的输出目录
-          publish_branch: preview # 推送到 gh-pages 分支
-          force_orphan: true # 创建独立分支
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: 'Deploy from main branch - ${{ github.sha }}'
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
