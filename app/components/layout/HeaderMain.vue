@@ -1,71 +1,73 @@
 <template>
-  <el-row justify="center" class="header-main">
-    <el-row class="container-block nav-wrapper" justify="space-between">
-      <el-col :span="4"> Logo </el-col>
-      <el-col :span="20">
-        <el-menu
-          mode="horizontal"
-          background-color="#fff"
-          text-color="#333"
-          active-text-color="#ff6700"
-          class="main-nav"
-        >
-          <el-menu-item index="home"
-            ><NuxtLink to="/">首页</NuxtLink></el-menu-item
+  <el-affix :offset="0">
+    <el-row justify="center" class="header-main">
+      <el-row class="container-block nav-wrapper" justify="space-between">
+        <el-col :span="4"> Logo </el-col>
+        <el-col :span="20">
+          <el-menu
+            mode="horizontal"
+            background-color="#fff"
+            text-color="#333"
+            active-text-color="#ff6700"
+            class="main-nav"
           >
-          <el-menu-item
-            v-for="item in categoryList"
-            :key="item.id"
-            :index="item.id.toString()"
-          >
-            <NuxtLink
-              :to="`/category/${item.id}`"
-              class="menu-item-link"
-              @mouseenter.stop="handleMouseEnter(item)"
+            <el-menu-item index="home"
+              ><NuxtLink to="/">首页</NuxtLink></el-menu-item
             >
-              {{ item.name }}
-            </NuxtLink>
-          </el-menu-item>
-        </el-menu>
-
-        <!-- 自定义下拉菜单容器 - 纯CSS控制显示隐藏 -->
-        <div
-          class="dropdown-container"
-          :class="{ 'dropdown-visible': shouldShowDropdown }"
-          @mouseleave="handleDropdownMouseLeave"
-        >
-          <div class="dropdown-content" v-if="hasChildrenCategories">
-            <el-row :gutter="20">
-              <el-col
-                v-for="child in currentCategory?.children"
-                :key="child.id"
-                :xs="6"
-                :sm="6"
-                :md="4"
-                :lg="4"
-                :xl="3"
+            <el-menu-item
+              v-for="item in categoryList"
+              :key="item.id"
+              :index="item.id.toString()"
+            >
+              <NuxtLink
+                :to="`/category/${item.id}`"
+                class="menu-item-link"
+                @mouseenter.stop="handleMouseEnter(item)"
               >
-                <NuxtLink
-                  :to="`/category/sub/${child.id}`"
-                  class="child-category-link"
+                {{ item.name }}
+              </NuxtLink>
+            </el-menu-item>
+          </el-menu>
+
+          <!-- 自定义下拉菜单容器 - 纯CSS控制显示隐藏 -->
+          <div
+            class="dropdown-container"
+            :class="{ 'dropdown-visible': shouldShowDropdown }"
+            @mouseleave="handleDropdownMouseLeave"
+          >
+            <div class="dropdown-content" v-if="hasChildrenCategories">
+              <el-row :gutter="20">
+                <el-col
+                  v-for="child in currentCategory?.children"
+                  :key="child.id"
+                  :xs="6"
+                  :sm="6"
+                  :md="4"
+                  :lg="4"
+                  :xl="3"
                 >
-                  <div class="child-category">
-                    <img
-                      :src="child.picture"
-                      :alt="child.name"
-                      class="child-image"
-                      loading="lazy"
-                    />
-                    <div class="child-name">{{ child.name }}</div>
-                  </div>
-                </NuxtLink>
-              </el-col>
-            </el-row>
+                  <NuxtLink
+                    :to="`/category/sub/${child.id}`"
+                    class="child-category-link"
+                  >
+                    <div class="child-category">
+                      <img
+                        :src="child.picture"
+                        :alt="child.name"
+                        class="child-image"
+                        loading="lazy"
+                      />
+                      <div class="child-name">{{ child.name }}</div>
+                    </div>
+                  </NuxtLink>
+                </el-col>
+              </el-row>
+            </div>
           </div>
-        </div>
-      </el-col>
+        </el-col>
+      </el-row>
     </el-row>
-  </el-row>
+  </el-affix>
 </template>
 
 <script setup lang="ts">
@@ -75,13 +77,14 @@ import { getHomeCategoryApi } from '~/apis/home';
 import type { Category } from '~/types/home';
 
 // 使用 useState 持久化状态，避免路由切换时重新渲染
-const categoryList = useState<Category[]>('categoryList', () => []);
 const currentCategoryId = ref<string | null>(null);
 const visible = ref<boolean>(false);
 
 // 当前选中的分类
 const currentCategory = computed<Category | undefined>(() => {
-  return categoryList.value.find((item) => item.id === currentCategoryId.value);
+  return categoryList.value!.find(
+    (item) => item.id === currentCategoryId.value
+  );
 });
 
 // 判断当前分类是否有子分类
@@ -110,12 +113,11 @@ const handleDropdownMouseLeave = () => {
   currentCategoryId.value = null;
 };
 
-await useAsyncData(
+const { data: categoryList } = await useAsyncData(
   'header-navigation',
   async () => {
     const response = await getHomeCategoryApi();
-    categoryList.value = response || [];
-    return categoryList.value;
+    return response || [];
   },
   {
     server: true,
@@ -124,6 +126,11 @@ await useAsyncData(
 </script>
 
 <style lang="scss" scoped>
+.header-main {
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 .main-nav {
   justify-content: end;
 }

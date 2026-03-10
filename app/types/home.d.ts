@@ -48,3 +48,19 @@ export interface HomeBanner {
   imgUrl: string;
   type: string;
 }
+
+export interface NewGoods {
+  desc: string;
+  id: string;
+  name: string;
+  orderNum: number;
+  picture: string;
+  price: string;
+}
+
+export interface HotGoods {
+  alt: string;
+  id: string;
+  picture: string;
+  title: string;
+}
