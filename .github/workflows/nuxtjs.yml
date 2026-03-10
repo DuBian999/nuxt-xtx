@@ -1,5 +1,8 @@
 # .github/workflows/deploy.yml
 name: 部署到 GitHub Pages
+run: pnpm exec nuxt build --preset github_pages
+env:
+    NUXT_APP_BASE_URL: /${{ github.event.repository.name }}/
 on:
   workflow_dispatch:
   push:
