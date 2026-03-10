@@ -1,0 +1,30 @@
+a {
+  text-decoration: none;
+}
+
+.container-block {
+  width: 100%;
+  max-width: 1240px;
+}
+
+
+/* 常规菜单项 - hover 和 focus */
+.el-menu-item:hover,
+.el-menu-item:focus {
+  background-color: transparent !important;
+}
+
+/* 子菜单标题 - hover 和 focus */
+.el-sub-menu__title:hover,
+.el-sub-menu__title:focus {
+  background-color: transparent !important;
+}
+
+/* 如果菜单项有激活状态（:active），也一并处理 */
+.el-menu-item:active {
+  background-color: transparent !important;
+}
+
+.el-menu--horizontal.el-menu{
+    border-bottom: none !important;
+}
