@@ -7,7 +7,6 @@ a {
   max-width: 1240px;
 }
 
-
 /* 常规菜单项 - hover 和 focus */
 .el-menu-item:hover,
 .el-menu-item:focus {
@@ -25,6 +24,6 @@ a {
   background-color: transparent !important;
 }
 
-.el-menu--horizontal.el-menu{
-    border-bottom: none !important;
+.el-menu--horizontal.el-menu {
+  border-bottom: none !important;
 }

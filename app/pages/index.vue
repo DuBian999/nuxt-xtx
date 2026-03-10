@@ -17,10 +17,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-import { useRouter } from "vue-router";
-import { getHomeBananerApi } from "~/apis/home";
-import type { HomeBanner } from "~/types/home";
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { getHomeBananerApi } from '~/apis/home';
+import type { HomeBanner } from '~/types/home';
 
 const router = useRouter();
 const bannerList = ref<HomeBanner[]>([]);
@@ -31,7 +31,7 @@ const fetchBannerData = async () => {
     const response = await getHomeBananerApi(1);
     bannerList.value = response || [];
   } catch (error) {
-    console.error("获取banner数据失败:", error);
+    console.error('获取banner数据失败:', error);
   }
 };
 

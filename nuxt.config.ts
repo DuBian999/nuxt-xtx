@@ -1,19 +1,20 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: "2025-07-15",
+  compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   runtimeConfig: {
     // 服务端环境变量
     apiSecret: process.env.NUXT_API_SECRET,
     // 客户端环境变量
     public: {
-      apiBase: process.env.VITE_APP_BASE_API || "/api",
+      apiBase: process.env.VITE_APP_BASE_API || '/api',
     },
   },
-  modules: ["@element-plus/nuxt"],
+  modules: ['@element-plus/nuxt'],
   // 配置全局样式
-  css: [
-    "normalize.css",
-    "@/styles/common.scss",
-  ],
+  css: ['normalize.css', '@/styles/common.scss'],
+  // 配置开发服务器
+  devServer: {
+    host: '0.0.0.0',
+  },
 });
