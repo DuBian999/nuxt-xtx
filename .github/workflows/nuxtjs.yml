@@ -11,7 +11,7 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -29,16 +29,16 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build with Nuxt
-        run: pnpm run build
+      - name: Generate static site
+        run: pnpm run generate # 使用 generate 命令生成静态站点
 
-      - name: Deploy to preview branch
+      - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./.output/public  # Nuxt 3 的构建输出目录
-          publish_branch: preview  # 推送到 preview 分支
-          force_orphan: true  # 创建独立分支
+          publish_dir: ./dist # Nuxt generate 的输出目录
+          publish_branch: preview # 推送到 gh-pages 分支
+          force_orphan: true # 创建独立分支
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           commit_message: 'Deploy from main branch - ${{ github.sha }}'

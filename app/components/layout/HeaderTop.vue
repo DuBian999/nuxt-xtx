@@ -12,22 +12,22 @@
           ><NuxtLink to="/login">请先登录</NuxtLink></el-menu-item
         >
         <el-menu-item index="register"
-          ><NuxtLink to="/register">免费注册</NuxtLink></el-menu-item
+          ><NuxtLink to="/">免费注册</NuxtLink></el-menu-item
         >
         <el-menu-item index="orders"
-          ><NuxtLink to="/orders">我的订单</NuxtLink></el-menu-item
+          ><NuxtLink to="/">我的订单</NuxtLink></el-menu-item
         >
         <el-menu-item index="member"
-          ><NuxtLink to="/member">会员中心</NuxtLink></el-menu-item
+          ><NuxtLink to="/">会员中心</NuxtLink></el-menu-item
         >
         <el-menu-item index="help"
-          ><NuxtLink to="/help">帮助中心</NuxtLink></el-menu-item
+          ><NuxtLink to="/">帮助中心</NuxtLink></el-menu-item
         >
         <el-menu-item index="about"
-          ><NuxtLink to="/about">关于我们</NuxtLink></el-menu-item
+          ><NuxtLink to="/">关于我们</NuxtLink></el-menu-item
         >
         <el-menu-item index="mobile"
-          ><NuxtLink to="/mobile">手机版</NuxtLink></el-menu-item
+          ><NuxtLink to="/">手机版</NuxtLink></el-menu-item
         >
       </el-menu>
     </el-row>
