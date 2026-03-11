@@ -48,7 +48,7 @@ const { id } = route.params;
             text-decoration: none;
 
             &:hover {
-              color: #ff6700;
+              color: var(--theme-color);
             }
           }
         }
@@ -98,7 +98,7 @@ const { id } = route.params;
 
             p {
               font-size: 16px;
-              color: #ff6700;
+              color: var(--theme-color);
               font-weight: bold;
               margin: 0;
             }

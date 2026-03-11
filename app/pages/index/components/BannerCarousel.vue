@@ -7,7 +7,7 @@
         height="500px"
       >
         <el-carousel-item v-for="banner in bannerList" :key="banner.id">
-          <img :src="banner.imgUrl" height="500" />
+          <img :src="banner.imgUrl" height="500" loading="lazy" />
         </el-carousel-item>
       </el-carousel>
     </div>

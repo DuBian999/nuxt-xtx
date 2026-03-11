@@ -14,6 +14,7 @@
           class="category-img"
           :src="category.picture"
           :alt="category.name"
+          loading="lazy"
         />
         <div class="sale-info">
           <span class="sale-name">{{ category.name }}馆</span>
@@ -45,7 +46,12 @@
           >
             <div class="goods-item">
               <div class="goods-image">
-                <img class="goods-img" :src="goods.picture" :alt="goods.name" />
+                <img
+                  class="goods-img"
+                  :src="goods.picture"
+                  :alt="goods.name"
+                  loading="lazy"
+                />
               </div>
               <div class="goods-info">
                 <h4 class="goods-name">{{ goods.name }}</h4>
@@ -96,9 +102,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-// 主题色
-$theme-color: #ff6700;
-
 .el-row {
   margin-left: 0 !important;
   margin-right: 0 !important;
@@ -153,7 +156,7 @@ $theme-color: #ff6700;
 
     .sale-name {
       text-align: center;
-      background-color: $theme-color;
+      background-color: var(--theme-color);
       width: 100%;
       padding: 8px 0;
     }
@@ -186,7 +189,7 @@ $theme-color: #ff6700;
     cursor: pointer;
 
     &:hover {
-      background-color: $theme-color;
+      background-color: var(--theme-color);
       transform: translateY(-2px);
 
       .child-name {
@@ -213,7 +216,7 @@ $theme-color: #ff6700;
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    border: 2px solid $theme-color;
+    border: 2px solid var(--theme-color);
 
     .hover-actions {
       transform: translateY(0);
@@ -273,7 +276,7 @@ $theme-color: #ff6700;
     .goods-price {
       font-size: 16px;
       font-weight: 600;
-      color: $theme-color;
+      color: var(--theme-color);
       margin: 0 0 4px 0;
     }
 
@@ -288,7 +291,7 @@ $theme-color: #ff6700;
       bottom: 0;
       left: 0;
       right: 0;
-      background-color: $theme-color;
+      background-color: var(--theme-color);
       color: #fff;
       padding: 10px;
       display: flex;

@@ -11,8 +11,21 @@ export default defineNuxtConfig({
     },
   },
   modules: ['@element-plus/nuxt'],
-  // 配置全局样式
+  elementPlus: {
+    importStyle: 'scss',
+  },
+  // 配置全局样式和预处理器
   css: ['normalize.css', '@/styles/common.scss'],
+  // 配置 SCSS 预处理器
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "@/styles/variables.scss" as *;`,
+        },
+      },
+    },
+  },
   // 配置开发服务器
   devServer: {
     host: '0.0.0.0',

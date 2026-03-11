@@ -123,7 +123,7 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 // 主题色
-$theme-color: #ff6700;
+$theme-color: var(--theme-color);
 
 .footer-card {
   text-align: center;

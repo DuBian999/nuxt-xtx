@@ -5,6 +5,7 @@
         src="https://via.placeholder.com/200x200?text=扫码登录"
         alt="扫码登录"
         class="qrcode-image"
+        loading="lazy"
       />
       <p>请使用小兔鲜儿APP扫码登录</p>
     </div>

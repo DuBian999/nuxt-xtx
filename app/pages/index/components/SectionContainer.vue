@@ -9,8 +9,13 @@
           </div>
           <div v-if="showViewAll" class="view-all-container">
             <slot name="viewAll">
-              <el-link class="view-all-link" @click="handleViewAllClick">
+              <el-link
+                underline="never"
+                class="view-all-link"
+                @click="handleViewAllClick"
+              >
                 {{ viewAllText || '查看全部' }}
+                <el-icon><Right /></el-icon>
               </el-link>
             </slot>
           </div>
@@ -22,6 +27,7 @@
 </template>
 
 <script setup lang="ts">
+import { Right } from '@element-plus/icons-vue';
 // 定义props
 const props = defineProps<{
   title: string;
@@ -78,10 +84,10 @@ const handleViewAllClick = () => {
 
       .view-all-link {
         font-size: 14px;
-        color: #ff6700;
+        color: var(--theme-color);
 
         &:hover {
-          color: #ff9e42;
+          color: var(--theme-color-light);
         }
       }
     }

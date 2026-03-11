@@ -36,7 +36,12 @@
       >
         <el-row justify="space-between">
           <el-col :span="4" v-for="brand in brandGroup" :key="brand.id">
-            <img :src="brand.picture" :alt="brand.title" class="brand-image" />
+            <img
+              :src="brand.picture"
+              :alt="brand.title"
+              class="brand-image"
+              loading="lazy"
+            />
           </el-col>
         </el-row>
       </el-carousel-item>

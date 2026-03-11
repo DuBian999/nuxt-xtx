@@ -16,7 +16,12 @@
       >
         <div class="goods-item">
           <div class="goods-image">
-            <img class="goods-img" :src="goods.picture" :alt="goods.title" />
+            <img
+              class="goods-img"
+              :src="goods.picture"
+              :alt="goods.title"
+              loading="lazy"
+            />
           </div>
           <div class="goods-info">
             <h4 class="goods-name">{{ goods.title }}</h4>
@@ -117,7 +122,7 @@ onMounted(() => {
     .goods-price {
       font-size: 16px;
       font-weight: 600;
-      color: #ff6700;
+      color: var(--theme-color);
       margin: 0;
     }
   }

@@ -27,7 +27,7 @@ const parentId = id.toString().split('-')[0];
       text-decoration: none;
 
       &:hover {
-        color: #ff6700;
+        color: var(--theme-color);
       }
     }
 
@@ -65,14 +65,14 @@ const parentId = id.toString().split('-')[0];
         cursor: pointer;
 
         &:hover {
-          border-color: #ff6700;
-          color: #ff6700;
+          border-color: var(--theme-color);
+          color: var(--theme-color);
         }
 
         &.active {
-          background-color: #ff6700;
+          background-color: var(--theme-color);
           color: #fff;
-          border-color: #ff6700;
+          border-color: var(--theme-color);
         }
       }
     }
@@ -113,7 +113,7 @@ const parentId = id.toString().split('-')[0];
 
         .product-price {
           font-size: 18px;
-          color: #ff6700;
+          color: var(--theme-color);
           font-weight: bold;
           margin-bottom: 10px;
         }
@@ -128,14 +128,14 @@ const parentId = id.toString().split('-')[0];
         .add-to-cart {
           width: 100%;
           padding: 10px;
-          background-color: #ff6700;
+          background-color: var(--theme-color);
           color: #fff;
           border: none;
           border-radius: 4px;
           cursor: pointer;
 
           &:hover {
-            background-color: #ff8533;
+            background-color: var(--theme-color-light);
           }
         }
       }
@@ -156,8 +156,8 @@ const parentId = id.toString().split('-')[0];
       cursor: pointer;
 
       &:hover:not(:disabled) {
-        border-color: #ff6700;
-        color: #ff6700;
+        border-color: var(--theme-color);
+        color: var(--theme-color);
       }
 
       &:disabled {

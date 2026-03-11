@@ -19,7 +19,7 @@
           @click="handleSpecialClick(special.detailsUrl)"
         >
           <div class="special-image">
-            <img :src="special.cover" :alt="special.title" />
+            <img :src="special.cover" :alt="special.title" loading="lazy" />
           </div>
           <div class="special-info">
             <h3 class="special-title">{{ special.title }}</h3>
@@ -49,7 +49,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-import { Star, View, ChatLineRound } from '@element-plus/icons-vue';
 import { getHomeSpecialApi } from '~/apis/home';
 import SectionContainer from './SectionContainer.vue';
 import type { SpecialItem } from '~/types/home';
@@ -88,7 +87,6 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 // 主题色
-$theme-color: #ff6700;
 
 .home-special {
   background-color: #f9f9f9;
@@ -167,7 +165,7 @@ $theme-color: #ff6700;
       .special-price {
         font-size: 18px;
         font-weight: 600;
-        color: $theme-color;
+        color: var(--theme-color);
       }
 
       .special-stats {

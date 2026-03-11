@@ -8,6 +8,7 @@
             alt="logo"
             width="60"
             height="60"
+            loading="lazy"
           />
           <span class="logo-text">Nuxt</span>
         </el-col>
@@ -16,7 +17,7 @@
             mode="horizontal"
             background-color="#fff"
             text-color="#333"
-            active-text-color="#ff6700"
+            :active-text-color="'var(--theme-color)'"
             class="main-nav"
           >
             <el-menu-item index="home"
@@ -142,7 +143,7 @@ const { data: categoryList } = await useAsyncData(
 .logo-text {
   font-size: 24px;
   font-weight: 600;
-  color: #ff6700;
+  color: var(--theme-color);
   margin-left: 8px;
 }
 
@@ -205,7 +206,7 @@ const { data: categoryList } = await useAsyncData(
       background-color: #f5f5f5;
 
       .child-name {
-        color: #ff6700;
+        color: var(--theme-color);
       }
     }
 
@@ -232,7 +233,7 @@ const { data: categoryList } = await useAsyncData(
   transition: color 0.3s ease;
 
   &:hover {
-    color: #ff6700;
+    color: var(--theme-color);
   }
 }
 </style>

@@ -5,7 +5,7 @@
         mode="horizontal"
         background-color="transparent"
         text-color="#666"
-        active-text-color="#ff6700"
+        :active-text-color="'var(--theme-color)'"
         class="top-nav"
       >
         <el-menu-item index="login"
