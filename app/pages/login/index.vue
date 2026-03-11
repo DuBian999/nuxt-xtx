@@ -53,10 +53,10 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import PasswordLogin from '~/components/login/PasswordLogin.vue';
-import SmsLogin from '~/components/login/SmsLogin.vue';
-import QrcodeLogin from '~/components/login/QrcodeLogin.vue';
-import ThirdPartyLogin from '~/components/login/ThirdPartyLogin.vue';
+import PasswordLogin from './components/PasswordLogin.vue';
+import SmsLogin from './components/SmsLogin.vue';
+import QrcodeLogin from './components/QrcodeLogin.vue';
+import ThirdPartyLogin from './components/ThirdPartyLogin.vue';
 
 // 指定使用 blank 布局
 definePageMeta({

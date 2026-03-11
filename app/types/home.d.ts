@@ -71,3 +71,64 @@ export interface Brand {
   picture: string;
   title: string;
 }
+
+// 商品信息类型
+export interface GoodsItem {
+  /** 商品ID */
+  id: string;
+  /** 商品名称 */
+  name: string;
+  /** 商品描述 */
+  desc: string;
+  /** 商品价格 */
+  price: string;
+  /** 商品图片URL */
+  picture: string;
+  /** 订单数量（销量） */
+  orderNum: number;
+}
+
+// 子分类信息类型
+export interface ChildCategory {
+  /** 子分类ID */
+  id: string;
+  /** 子分类名称 */
+  name: string;
+  /** 分类层级 */
+  layer: number;
+  /** 父级分类ID（可能为null） */
+  parent: string | null;
+}
+
+// 主分类信息类型
+export interface CategoryResult {
+  /** 分类ID */
+  id: string;
+  /** 分类名称 */
+  name: string;
+  /** 分类图片URL */
+  picture: string;
+  /** 促销信息（可能包含换行符） */
+  saleInfo: string;
+  /** 子分类列表 */
+  children: ChildCategory[];
+  /** 商品列表 */
+  goods: GoodsItem[];
+}
+
+export interface SpecialItem {
+  creator: string;
+  isDelete: number;
+  createTime: string;
+  updateTime: string;
+  id: string;
+  classificationId: string;
+  title: string;
+  summary: string;
+  lowestPrice: number;
+  cover: string;
+  detailsUrl: string;
+  collectNum: number;
+  viewNum: number;
+  replyNum: number;
+}

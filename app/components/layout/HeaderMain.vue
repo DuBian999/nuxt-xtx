@@ -2,8 +2,14 @@
   <el-affix :offset="0">
     <el-row justify="center" class="header-main">
       <el-row class="container-block nav-wrapper" justify="space-between">
-        <el-col :span="4">
-          <img src="../../public/favicon.ico" alt="logo" class="logo" />
+        <el-col :span="4" class="logo">
+          <img
+            src="~/assets/img/favicon.ico"
+            alt="logo"
+            width="60"
+            height="60"
+          />
+          <span class="logo-text">Nuxt</span>
         </el-col>
         <el-col :span="20">
           <el-menu
@@ -128,6 +134,18 @@ const { data: categoryList } = await useAsyncData(
 </script>
 
 <style lang="scss" scoped>
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ff6700;
+  margin-left: 8px;
+}
+
 .header-main {
   background-color: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);

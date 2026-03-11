@@ -5,6 +5,8 @@ import type {
   HomeBanner,
   HotGoods,
   Brand,
+  CategoryResult,
+  SpecialItem,
 } from '../types/home';
 
 // 获取首页分类导航
@@ -36,7 +38,16 @@ export function getHomeHotApi() {
 }
 
 //  获取热门品牌
-
 export function getHomeBrandsApi(limit = 10) {
   return request.get<Brand[]>('/home/brand', { params: { limit } });
+}
+
+// 获取首页商品推荐
+export function getHomeGoodsApi() {
+  return request.get<CategoryResult[]>('/home/goods');
+}
+
+// 获取首页最新专题
+export function getHomeSpecialApi(limit = 4) {
+  return request.get<SpecialItem[]>('/home/special', { params: { limit } });
 }

@@ -45,6 +45,7 @@ const handleViewAllClick = () => {
 <style lang="scss" scoped>
 .section-container {
   background-color: #fff;
+  padding-bottom: 20px;
 
   .el-row {
     margin-left: 0 !important;
@@ -81,27 +82,6 @@ const handleViewAllClick = () => {
 
         &:hover {
           color: #ff9e42;
-        }
-      }
-    }
-  }
-}
-
-// 响应式设计
-@media (max-width: 768px) {
-  .section-container {
-    padding: 20px 0;
-
-    .section-header {
-      margin-bottom: 20px;
-
-      .header-content {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-
-        .header-text .title {
-          font-size: 20px;
         }
       }
     }

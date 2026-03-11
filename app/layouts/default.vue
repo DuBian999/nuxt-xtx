@@ -34,6 +34,10 @@ import Footer from '@/components/layout/Footer.vue';
   padding: 0;
 }
 
+.footer {
+  padding: 0;
+}
+
 .main {
   padding: 0;
 }

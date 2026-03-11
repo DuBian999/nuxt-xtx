@@ -3,13 +3,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "eslint.validate": [
-    "javascript",
-    "typescript",
-    "vue"
-  ],
-  "stylelint.validate": [
-    "css",
-    "scss"
-  ]
+  "eslint.validate": ["javascript", "typescript", "vue"],
+  "stylelint.validate": ["css", "scss"]
 }
