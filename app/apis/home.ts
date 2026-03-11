@@ -1,5 +1,11 @@
 import request from '../services/api';
-import type { Category, NewGoods, HomeBanner, HotGoods } from '../types/home';
+import type {
+  Category,
+  NewGoods,
+  HomeBanner,
+  HotGoods,
+  Brand,
+} from '../types/home';
 
 // 获取首页分类导航
 export const getHomeCategoryApi = () => {
@@ -27,4 +33,10 @@ export function getHomeNewGoodsApi(limit = 4) {
 // 获取首页人气推荐
 export function getHomeHotApi() {
   return request.get<HotGoods[]>('/home/hot');
+}
+
+//  获取热门品牌
+
+export function getHomeBrandsApi(limit = 10) {
+  return request.get<Brand[]>('/home/brand', { params: { limit } });
 }

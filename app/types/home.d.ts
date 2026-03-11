@@ -64,3 +64,10 @@ export interface HotGoods {
   picture: string;
   title: string;
 }
+
+export interface Brand {
+  alt: string;
+  id: string;
+  picture: string;
+  title: string;
+}

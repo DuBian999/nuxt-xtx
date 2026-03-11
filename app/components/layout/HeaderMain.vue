@@ -2,7 +2,9 @@
   <el-affix :offset="0">
     <el-row justify="center" class="header-main">
       <el-row class="container-block nav-wrapper" justify="space-between">
-        <el-col :span="4"> Logo </el-col>
+        <el-col :span="4">
+          <img src="../../public/favicon.ico" alt="logo" class="logo" />
+        </el-col>
         <el-col :span="20">
           <el-menu
             mode="horizontal"
@@ -71,7 +73,7 @@
 </template>
 
 <script setup lang="ts">
-import { useAsyncData, useState } from 'nuxt/app';
+import { useAsyncData } from 'nuxt/app';
 import { computed, ref } from 'vue';
 import { getHomeCategoryApi } from '~/apis/home';
 import type { Category } from '~/types/home';

@@ -63,30 +63,121 @@
             </div>
             <div class="goods-info">
               <h4 class="goods-name">{{ goods.title }}</h4>
-              <p class="goods-price">¥{{ goods.alt }}</p>
+              <p class="goods-price">{{ goods.alt }}</p>
             </div>
           </div>
         </el-col>
       </el-row>
     </SectionContainer>
+
+    <SectionContainer
+      title="热门品牌"
+      subTitle="国际经典 品质保证"
+      :showViewAll="true"
+      containerClass="home-brand"
+      @viewAllClick="handleViewAll"
+    >
+      <template #viewAll>
+        <div class="carousel-controls">
+          <el-button
+            size="small"
+            :disabled="currentCarouselIndex === 0"
+            @click="handlePrev"
+            :icon="ArrowLeft"
+          />
+          <el-button
+            size="small"
+            :disabled="currentCarouselIndex === carouselBrandList.length - 1"
+            @click="handleNext"
+            :icon="ArrowRight"
+          />
+        </div>
+      </template>
+
+      <el-carousel
+        v-model="currentCarouselIndex"
+        indicator-position="none"
+        :autoplay="false"
+        arrow="never"
+        height="305px"
+        ref="carouselRef"
+      >
+        <el-carousel-item
+          v-for="(brandGroup, index) in carouselBrandList"
+          :key="index"
+        >
+          <el-row justify="space-between">
+            <el-col :span="4" v-for="brand in brandGroup" :key="brand.id">
+              <img
+                :src="brand.picture"
+                :alt="brand.title"
+                class="brand-image"
+              />
+            </el-col>
+          </el-row>
+        </el-carousel-item>
+      </el-carousel>
+    </SectionContainer>
+    <div style="height: 300px"></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ArrowLeft, ArrowRight } from '@element-plus/icons-vue';
+import type { CarouselInstance } from 'element-plus';
+import { computed, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import SectionContainer from '~/components/SectionContainer.vue';
 import {
   getHomeBananerApi,
-  getHomeNewGoodsApi,
+  getHomeBrandsApi,
   getHomeHotApi,
+  getHomeNewGoodsApi,
 } from '~/apis/home';
-import type { NewGoods, HomeBanner, HotGoods } from '~/types/home';
+import SectionContainer from '~/components/SectionContainer.vue';
+import type { Brand, HomeBanner, HotGoods, NewGoods } from '~/types/home';
 
+const carouselRef = ref<CarouselInstance | null>(null);
 const router = useRouter();
 const bannerList = ref<HomeBanner[]>([]);
 const newGoodsList = ref<NewGoods[]>([]);
 const hotGoodsList = ref<HotGoods[]>([]);
+const brandList = ref<Brand[]>([]);
+const currentCarouselIndex = ref(0);
+
+// 将品牌列表分割为每组5个的数组
+const carouselBrandList = computed(() => {
+  const result: Brand[][] = [];
+  for (let i = 0; i < brandList.value.length; i += 5) {
+    result.push(brandList.value.slice(i, i + 5));
+  }
+  return result;
+});
+
+// 切换到上一页
+const handlePrev = () => {
+  if (currentCarouselIndex.value > 0) {
+    currentCarouselIndex.value--;
+    carouselRef.value?.prev();
+  }
+};
+
+// 切换到下一页
+const handleNext = () => {
+  if (currentCarouselIndex.value < carouselBrandList.value.length - 1) {
+    currentCarouselIndex.value++;
+    carouselRef.value?.next();
+  }
+};
+
+// 获取热门品牌数据
+const fetchBrandData = async () => {
+  try {
+    const response = await getHomeBrandsApi(12);
+    brandList.value = response || [];
+  } catch (error) {
+    console.error('获取热门品牌数据失败:', error);
+  }
+};
 
 // 获取最新商品数据
 const fetchNewGoodsData = async () => {
@@ -137,6 +228,7 @@ onMounted(() => {
   fetchBannerData();
   fetchNewGoodsData();
   fetchHotGoodsData();
+  fetchBrandData();
 });
 </script>
 
@@ -202,6 +294,26 @@ onMounted(() => {
       margin: 0;
     }
   }
+}
+
+.home-brand {
+  background-color: #f5f5f5;
+  padding-bottom: 20px;
+}
+// 轮播控制按钮样式
+.carousel-controls {
+  display: flex;
+  gap: 10px;
+
+  .el-button {
+    font-size: 14px;
+  }
+}
+
+.brand-image {
+  transition: transform 0.3s ease;
+  width: 240px;
+  height: 305px;
 }
 
 // 响应式设计

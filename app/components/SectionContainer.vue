@@ -7,13 +7,13 @@
             <h3 class="title">{{ title }}</h3>
             <p class="sub-title" v-if="subTitle">{{ subTitle }}</p>
           </div>
-          <el-link
-            v-if="showViewAll"
-            class="view-all-link"
-            @click="handleViewAllClick"
-          >
-            {{ viewAllText || '查看全部' }}
-          </el-link>
+          <div v-if="showViewAll" class="view-all-container">
+            <slot name="viewAll">
+              <el-link class="view-all-link" @click="handleViewAllClick">
+                {{ viewAllText || '查看全部' }}
+              </el-link>
+            </slot>
+          </div>
         </div>
       </div>
       <slot></slot>
