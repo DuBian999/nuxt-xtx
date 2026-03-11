@@ -124,8 +124,9 @@ onMounted(() => {
 }
 
 .brand-image {
-  transition: transform 0.3s ease;
+  @extend .transition-transform;
   width: 240px;
   height: 305px;
+  @extend .hover-scale;
 }
 </style>

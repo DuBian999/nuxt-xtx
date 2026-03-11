@@ -176,7 +176,7 @@ const { data: categoryList } = await useAsyncData(
   opacity: 0;
   transform: translateY(-20px);
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  @extend .transition-dropdown;
   pointer-events: none; // 隐藏时不可交互
 
   // 显示状态 - 卷帘门打开
@@ -200,7 +200,7 @@ const { data: categoryList } = await useAsyncData(
     text-align: center;
     padding: 10px;
     border-radius: 4px;
-    transition: background-color 0.2s ease;
+    @extend .transition-bg;
 
     &:hover {
       background-color: #f5f5f5;
@@ -217,20 +217,21 @@ const { data: categoryList } = await useAsyncData(
       object-fit: cover;
       border-radius: 4px;
       margin-bottom: 8px;
-      transition: transform 0.3s ease;
+      @extend .transition-transform;
+      @extend .hover-scale;
     }
 
     .child-name {
       font-size: 14px;
       color: #333;
-      transition: color 0.3s ease;
+      @extend .transition-color;
     }
   }
 }
 
 // 可选：为导航链接添加悬停效果
 .menu-item-link {
-  transition: color 0.3s ease;
+  @extend .transition-color;
 
   &:hover {
     color: var(--theme-color);

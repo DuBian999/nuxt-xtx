@@ -138,7 +138,7 @@ $theme-color: var(--theme-color);
   font-size: 24px;
   font-weight: 600;
   color: $theme-color;
-  animation: fadeInUp 1s ease-out;
+  @extend .animate-fade-in-up;
 }
 
 .footer-subtitle {
@@ -155,6 +155,6 @@ $theme-color: var(--theme-color);
   font-size: 14px;
   color: #999;
   margin: 0;
-  animation: fadeInUp 1s ease-out 1s both;
+  @extend .animate-fade-in-up-delay;
 }
 </style>

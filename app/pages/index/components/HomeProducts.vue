@@ -151,7 +151,7 @@ onMounted(() => {
     font-size: 18px;
     transform: translateY(100%);
     opacity: 0;
-    animation: slideUp 3s ease-out forwards;
+    @extend .animate-slide-up;
     animation-delay: 0.2s;
 
     .sale-name {
@@ -185,7 +185,7 @@ onMounted(() => {
     border-radius: 4px;
     text-align: center;
     background-color: #f5f5f5;
-    transition: all 0.3s ease;
+    @extend .transition-all;
     cursor: pointer;
 
     &:hover {
@@ -200,7 +200,7 @@ onMounted(() => {
     .child-name {
       font-size: 14px;
       color: #333;
-      transition: color 0.3s ease;
+      @extend .transition-color;
     }
   }
 }
@@ -210,19 +210,12 @@ onMounted(() => {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.1s ease;
+  @extend .transition-all-fast;
   position: relative;
 
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    border: 2px solid var(--theme-color);
-
-    .hover-actions {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
+  @extend .hover-lift;
+  @extend .hover-shadow;
+  @extend .hover-border;
 
   .goods-image {
     width: 100%;
@@ -237,11 +230,8 @@ onMounted(() => {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    &:hover .goods-img {
-      transform: scale(1.05);
+      @extend .transition-transform;
+      @extend .hover-scale;
     }
   }
 
@@ -298,7 +288,7 @@ onMounted(() => {
       justify-content: space-around;
       transform: translateY(100%);
       opacity: 0;
-      transition: all 0.3s ease;
+      @extend .transition-all;
 
       .action-item {
         font-size: 12px;
@@ -309,18 +299,6 @@ onMounted(() => {
         }
       }
     }
-  }
-}
-
-// 动画定义
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
   }
 }
 

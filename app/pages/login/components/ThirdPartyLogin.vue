@@ -5,13 +5,25 @@
     </div>
     <div class="third-party-icons">
       <el-button circle @click="$emit('qqLogin')">
-        <i class="el-icon-qq"></i>
+        <img
+          src="~/assets/img/favicon.ico"
+          class="qrcode-image"
+          loading="lazy"
+        />
       </el-button>
       <el-button circle @click="$emit('wechatLogin')">
-        <i class="el-icon-chat-dot-round"></i>
+        <img
+          src="~/assets/img/favicon.ico"
+          class="qrcode-image"
+          loading="lazy"
+        />
       </el-button>
       <el-button circle @click="$emit('weiboLogin')">
-        <i class="el-icon-share"></i>
+        <img
+          src="~/assets/img/favicon.ico"
+          class="qrcode-image"
+          loading="lazy"
+        />
       </el-button>
     </div>
   </div>

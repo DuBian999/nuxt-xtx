@@ -1,13 +1,8 @@
 <template>
   <div class="qrcode-login">
     <div class="qrcode-container">
-      <img
-        src="https://via.placeholder.com/200x200?text=扫码登录"
-        alt="扫码登录"
-        class="qrcode-image"
-        loading="lazy"
-      />
-      <p>请使用小兔鲜儿APP扫码登录</p>
+      <img src="~/assets/img/favicon.ico" class="qrcode-image" loading="lazy" />
+      <p>请使用APP扫码登录</p>
     </div>
     <div class="qrcode-hint">
       <p>扫码登录更安全</p>

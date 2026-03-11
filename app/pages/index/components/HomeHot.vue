@@ -73,14 +73,12 @@ onMounted(() => {
   background-color: #f9f9f9;
   border-radius: 8px;
   overflow: hidden;
-  transition: all 0.3s ease;
+  @extend .transition-all;
   cursor: pointer;
   margin-bottom: 20px;
 
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  }
+  @extend .hover-lift;
+  @extend .hover-shadow;
 
   .goods-image {
     width: 100%;
@@ -95,11 +93,8 @@ onMounted(() => {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    &:hover .goods-img {
-      transform: scale(1.05);
+      @extend .transition-transform;
+      @extend .hover-scale;
     }
   }
 

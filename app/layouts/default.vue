@@ -19,9 +19,9 @@
 </template>
 
 <script setup>
-import HeaderTop from '@/components/layout/HeaderTop.vue';
-import HeaderMain from '@/components/layout/HeaderMain.vue';
-import Footer from '@/components/layout/Footer.vue';
+import HeaderTop from '@/components/Layouts/HeaderTop.vue';
+import HeaderMain from '@/components/Layouts/HeaderMain.vue';
+import Footer from '@/components/Layouts/Footer.vue';
 </script>
 
 <style lang="scss" scoped>

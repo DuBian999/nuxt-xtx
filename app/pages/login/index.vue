@@ -2,8 +2,8 @@
   <div class="login-container">
     <div class="login-wrapper">
       <div class="login-header">
-        <h2>小兔鲜儿</h2>
-        <p>新鲜 惠民 快捷</p>
+        <h2>Nuxt</h2>
+        <p>服务端渲染</p>
       </div>
       <div class="login-form">
         <div class="login-tabs">
@@ -130,8 +130,7 @@ const handleRegister = () => {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, var(--theme-color) 100%);
 }
 
 .login-wrapper {
