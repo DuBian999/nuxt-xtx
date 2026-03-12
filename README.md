@@ -5,6 +5,7 @@
 这是一个基于 Nuxt 4 和 Vue 3 的电商平台前端项目，集成了 Element Plus 组件库，实现了响应式布局和现代化的 UI 设计。项目包含了完整的首页、分类页、登录页等核心功能，并提供了丰富的动画效果和交互体验。
 
 ## 项目预览
+
 <table>
   <tr>
     <td>二维码预览</td>
@@ -15,6 +16,7 @@
     <td>https://dubian999.github.io/nuxt-xtx/</td>
   </tr>
 </table>
+
 ### 首页
 
 - 轮播图展示
@@ -39,12 +41,14 @@
 
 ## 技术栈
 
-- **框架**：Nuxt 4 + Vue 3 + Pinia
-- **组件库**：Element Plus
-- **样式**：SCSS
-- **代码规范**：ESLint + Prettier + Stylelint
-- **Git 钩子**：Husky + lint-staged
-- **包管理器**：pnpm
+| 技术     | 描述                          | 文档链接                                                                                                                               |
+| -------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| 框架     | Nuxt 4 + Vue 3                | [Nuxt 文档](https://nuxt.com/docs)                                                                                                     |
+| 组件库   | Element Plus                  | [Element Plus 文档](https://element-plus.org/zh-CN/)                                                                                   |
+| 样式     | SCSS                          | [SCSS 文档](https://sass-lang.com/documentation/)                                                                                      |
+| 代码规范 | ESLint + Prettier + Stylelint | [ESLint 文档](https://eslint.org/docs/latest/)、[Prettier 文档](https://prettier.io/docs/en/)、[Stylelint 文档](https://stylelint.io/) |
+| Git 钩子 | Husky + lint-staged           | [Husky 文档](https://typicode.github.io/husky/)、[lint-staged 文档](https://github.com/okonet/lint-staged)                             |
+| 包管理器 | pnpm                          | [pnpm 文档](https://pnpm.io/zh/)                                                                                                       |
 
 ## 项目功能
 
