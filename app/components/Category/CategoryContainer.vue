@@ -5,7 +5,7 @@
         <!-- 左侧导航栏 -->
 
         <el-col :span="6">
-          <el-affix :offset="70" target=".category-container">
+          <el-affix :offset="140" target=".category-container">
             <div class="navigation-sidebar">
               <ul class="nav-list">
                 <li

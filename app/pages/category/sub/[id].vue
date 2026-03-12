@@ -1,18 +1,25 @@
 <template>
   <el-row class="sub-category-page" justify="center">
-    <el-row class="container-block">sub-category-page{{ id }}</el-row>
+    <el-row class="container-block">
+      <SubFilter
+        :categoryId="id as string"
+        @filterChange="handleFilterChange"
+      />
+    </el-row>
   </el-row>
 </template>
 
-<script setup>
-import { useRoute, useRouter } from 'vue-router';
+<script setup lang="ts">
+import { useRoute } from 'vue-router';
+import SubFilter from '~/components/Category/SubFilter.vue';
 
 const route = useRoute();
-const router = useRouter();
 const { id } = route.params;
 
-// 从子分类ID中提取父分类ID（假设子分类ID格式为 parentId-subId）
-const parentId = id.toString().split('-')[0];
+const handleFilterChange = (selectedFilters: Record<string, string[]>) => {
+  // 处理筛选变化事件
+  console.log('筛选变化:', selectedFilters);
+};
 </script>
 
 <style lang="scss" scoped>

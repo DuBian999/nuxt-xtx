@@ -3,7 +3,7 @@ const typescriptParser = require('@typescript-eslint/parser');
 
 module.exports = [
   {
-    ignores: ['node_modules/', '.nuxt/', 'dist/'],
+    ignores: ['node_modules/', '.nuxt/', 'dist/', '.output/'],
   },
   {
     files: ['**/*.{js,ts,vue}'],

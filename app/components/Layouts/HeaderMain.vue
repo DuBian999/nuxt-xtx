@@ -130,7 +130,7 @@ const { data: categoryList } = await useAsyncData(
     return response || [];
   },
   {
-    server: true,
+    server: false,
   }
 );
 </script>
