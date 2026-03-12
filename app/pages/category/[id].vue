@@ -1,12 +1,24 @@
 <template>
-  <div>category {{ id }}</div>
+  <CategoryContainer v-if="category" :categoryData="category" />
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
+import { getCategoryApi } from '~/apis/category';
+import CategoryContainer from '~/components/Category/CategoryContainer.vue';
+import type { CategoryResult } from '~/types/category';
 
 const route = useRoute();
 const { id } = route.params;
+
+const category = ref<CategoryResult | null>(null);
+
+onMounted(() => {
+  getCategoryApi(id as string).then((res) => {
+    category.value = res;
+  });
+});
 </script>
 
 <style lang="scss" scoped>

@@ -175,7 +175,3 @@ pnpm stylelint:fix
 3. 代码提交时会自动进行 ESLint 和 Prettier 检查，请确保代码符合规范
 4. 图片使用了懒加载优化，提高页面加载速度
 5. 主题色可在 `app/styles/variables.scss` 文件中修改
-
-## 许可证
-
-MIT

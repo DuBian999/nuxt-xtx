@@ -40,6 +40,7 @@
 
           <!-- 自定义下拉菜单容器 - 纯CSS控制显示隐藏 -->
           <div
+            v-if="false"
             class="dropdown-container"
             :class="{ 'dropdown-visible': shouldShowDropdown }"
             @mouseleave="handleDropdownMouseLeave"
