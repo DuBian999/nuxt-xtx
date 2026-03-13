@@ -10,12 +10,12 @@ export default defineNuxtConfig({
       apiBase: process.env.VITE_APP_BASE_API || '/api',
     },
   },
-  modules: ['@element-plus/nuxt'],
+  modules: ['@element-plus/nuxt', '@pinia/nuxt'],
   elementPlus: {
     importStyle: 'scss',
   },
   // 配置全局样式和预处理器
-  css: ['normalize.css', '@/styles/common.scss'],
+  css: ['normalize.css', '@/styles/common.scss', '@/styles/loading.scss'],
   // 配置 SCSS 预处理器
   vite: {
     css: {

@@ -49,6 +49,7 @@ import { useRouter } from 'vue-router';
 import { getHomeSpecialApi } from '~/apis/home';
 import SectionContainer from './SectionContainer.vue';
 import type { SpecialItem } from '~/types/home';
+import { Star, View, ChatLineRound } from '@element-plus/icons-vue';
 
 const router = useRouter();
 const specialList = ref<SpecialItem[]>([]);

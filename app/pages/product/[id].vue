@@ -69,12 +69,10 @@
             <el-row align="middle" class="brand-info">
               <el-col :span="2">品牌:</el-col>
               <el-col :span="22">
-                <NuxtLink
-                  ><el-link type="primary" underline="never">{{
-                    productData?.brand.name
-                  }}</el-link></NuxtLink
-                ></el-col
-              >
+                <el-link type="primary" underline="never">{{
+                  productData?.brand?.name || '无品牌'
+                }}</el-link>
+              </el-col>
             </el-row>
 
             <!-- SKU选择 -->

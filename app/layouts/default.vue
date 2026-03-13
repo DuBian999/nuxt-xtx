@@ -22,6 +22,7 @@
 import HeaderTop from '@/components/Layouts/HeaderTop.vue';
 import HeaderMain from '@/components/Layouts/HeaderMain.vue';
 import Footer from '@/components/Layouts/Footer.vue';
+import Loading from '@/components/Loading/index.vue';
 </script>
 
 <style lang="scss" scoped>

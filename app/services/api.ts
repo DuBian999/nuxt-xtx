@@ -1,5 +1,6 @@
 import axios from 'axios';
 import type { AxiosRequestConfig, AxiosResponse } from 'axios';
+import loadingManager from './loading';
 
 // 创建 axios 实例
 
@@ -22,10 +23,14 @@ api.interceptors.request.use(
     if (config.baseURL && config.url && !config.url.startsWith('http')) {
       config.url = config.baseURL + config.url;
     }
+    // 显示 loading
+    loadingManager.showLoading();
     // 可以在这里添加 token 等认证信息
     return config;
   },
   (error) => {
+    // 隐藏 loading
+    loadingManager.hideLoading();
     return Promise.reject(error);
   }
 );
@@ -33,6 +38,8 @@ api.interceptors.request.use(
 // 响应拦截器
 api.interceptors.response.use(
   (response: AxiosResponse<Response<any>>) => {
+    // 隐藏 loading
+    loadingManager.hideLoading();
     const res = response.data;
     if (res.code !== '1') {
       // 处理错误
@@ -41,6 +48,8 @@ api.interceptors.response.use(
     return res.result;
   },
   (error) => {
+    // 隐藏 loading
+    loadingManager.hideLoading();
     console.error('API Error:', error);
     return Promise.reject(error);
   }
