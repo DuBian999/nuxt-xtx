@@ -43,9 +43,11 @@
             >
               <el-row class="section-header" justify="space-between">
                 <h4 class="section-title">{{ child.name }}</h4>
-                <el-link :href="`/subCategory/${child.id}`" underline="never">
-                  查看更多 <el-icon><Right /></el-icon>
-                </el-link>
+                <NuxtLink :to="`/subCategory/${child.id}`">
+                  <el-link underline="never">
+                    查看更多 <el-icon><Right /></el-icon
+                  ></el-link>
+                </NuxtLink>
               </el-row>
               <CategoryList :goods="child.goods" />
             </div>

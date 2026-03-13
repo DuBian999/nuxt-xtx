@@ -44,26 +44,28 @@
             :sm="8"
             :md="6"
           >
-            <div class="goods-item">
-              <div class="goods-image">
-                <img
-                  class="goods-img"
-                  :src="goods.picture"
-                  :alt="goods.name"
-                  loading="lazy"
-                />
-              </div>
-              <div class="goods-info">
-                <h4 class="goods-name">{{ goods.name }}</h4>
-                <p class="goods-desc">{{ goods.desc }}</p>
-                <p class="goods-price">¥{{ goods.price }}</p>
-                <p class="goods-sales">已售 {{ goods.orderNum }} 件</p>
-                <div class="hover-actions">
-                  <span class="action-item">找相似</span>
-                  <span class="action-item">发现更多宝贝</span>
+            <NuxtLink :to="`/product/${goods.id}`">
+              <div class="goods-item">
+                <div class="goods-image">
+                  <img
+                    class="goods-img"
+                    :src="goods.picture"
+                    :alt="goods.name"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="goods-info">
+                  <h4 class="goods-name">{{ goods.name }}</h4>
+                  <p class="goods-desc">{{ goods.desc }}</p>
+                  <p class="goods-price">¥{{ goods.price }}</p>
+                  <p class="goods-sales">已售 {{ goods.orderNum }} 件</p>
+                  <div class="hover-actions">
+                    <span class="action-item">找相似</span>
+                    <span class="action-item">发现更多宝贝</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </NuxtLink>
           </el-col>
         </el-row>
       </div>

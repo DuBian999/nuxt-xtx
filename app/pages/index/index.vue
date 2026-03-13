@@ -5,7 +5,7 @@
     <HomeHot />
     <HomeBrand />
     <HomeProduct />
-    <!--   <HomeSpecia /> -->
+    <HomeSpecia />
   </div>
 </template>
 

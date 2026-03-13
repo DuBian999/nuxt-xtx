@@ -14,10 +14,7 @@
         :sm="8"
         :md="8"
       >
-        <div
-          class="special-item"
-          @click="handleSpecialClick(special.detailsUrl)"
-        >
+        <div class="special-item">
           <div class="special-image">
             <img :src="special.cover" :alt="special.title" loading="lazy" />
           </div>

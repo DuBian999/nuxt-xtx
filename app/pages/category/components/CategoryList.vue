@@ -10,7 +10,7 @@
       class="goods-item"
       :class="`animate-fade-in-up-delay-${(index % 4) + 1}`"
     >
-      <NuxtLink class="goods-card">
+      <NuxtLink class="goods-card" :to="`/product/${goods.id}`">
         <div class="goods-image">
           <img
             :src="goods.picture"

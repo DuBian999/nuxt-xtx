@@ -6,7 +6,7 @@
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { getCategoryApi } from '~/apis/category';
-import CategoryContainer from '~/components/Category/CategoryContainer.vue';
+import CategoryContainer from './components/CategoryContainer.vue';
 import type { CategoryResult } from '~/types/category';
 
 const route = useRoute();

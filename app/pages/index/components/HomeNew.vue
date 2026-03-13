@@ -14,20 +14,22 @@
         v-for="goods in newGoodsList"
         :key="goods.id"
       >
-        <div class="goods-item">
-          <div class="goods-image">
-            <img
-              class="goods-img"
-              :src="goods.picture"
-              :alt="goods.name"
-              loading="lazy"
-            />
+        <NuxtLink :to="`/product/${goods.id}`">
+          <div class="goods-item">
+            <div class="goods-image">
+              <img
+                class="goods-img"
+                :src="goods.picture"
+                :alt="goods.name"
+                loading="lazy"
+              />
+            </div>
+            <div class="goods-info">
+              <h4 class="goods-name">{{ goods.name }}</h4>
+              <p class="goods-price">¥{{ goods.price }}</p>
+            </div>
           </div>
-          <div class="goods-info">
-            <h4 class="goods-name">{{ goods.name }}</h4>
-            <p class="goods-price">¥{{ goods.price }}</p>
-          </div>
-        </div>
+        </NuxtLink>
       </el-col>
     </el-row>
   </SectionContainer>

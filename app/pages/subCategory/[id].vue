@@ -68,7 +68,7 @@ import { Loading } from '@element-plus/icons-vue';
 import { computed, reactive, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { getGoodsListApi } from '~/apis/category';
-import SubFilter from '~/components/Category/SubFilter.vue';
+import SubFilter from './components/SubFilter.vue';
 import { useInfiniteScroll } from '~/composables/useInfiniteScroll';
 import type { FilterAttr, ProductItem } from '~/types/subcategory';
 
