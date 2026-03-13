@@ -63,18 +63,28 @@
           </el-checkbox-group>
         </div>
       </el-collapse-item>
-
-      <!-- 重置按钮 -->
-      <el-collapse-item>
-        <template #title>
-          <el-row @click.stop>
-            <el-button @click.stop="resetFilters" type="default" size="small">
-              重置
-            </el-button>
-          </el-row>
-        </template>
-      </el-collapse-item>
     </el-collapse>
+
+    <el-row align="middle" class="sort-radio">
+      <el-radio-group
+        v-model="sortField"
+        size="small"
+        @change="(val) => handleSortChange(val as string)"
+      >
+        <el-radio key="1" value="">默认排序</el-radio>
+        <el-radio key="2" value="publishTime">最新商品</el-radio>
+        <el-radio key="3" value="orderNum">最高人气</el-radio>
+        <el-radio key="4" value="evaluateNum">最多评论</el-radio>
+      </el-radio-group>
+      <el-button
+        class="reset-btn"
+        @click.stop="resetFilters"
+        type="default"
+        size="small"
+      >
+        重置
+      </el-button>
+    </el-row>
   </el-row>
 </template>
 
@@ -85,13 +95,18 @@ import type { ProductDetailResult } from '~/types/subcategory';
 
 const props = defineProps<{ categoryId: string }>();
 const emit = defineEmits<{
-  (e: 'filterChange', filters: Record<string, string[]>): void;
+  (
+    e: 'filterChange',
+    filters: Record<string, string[]>,
+    sortField: string
+  ): void;
 }>();
 
 // 状态
 const activeNames = ref<string[]>(['brands']);
 const filterData = ref<ProductDetailResult | null>(null);
 const loading = ref(false);
+const sortField = ref('');
 
 // 存储每个组的选项ID列表（用于全选）
 const optionIds = reactive<Record<string, string[]>>({});
@@ -138,18 +153,20 @@ const handleAllChange = (groupId: string, checked: boolean) => {
   } else {
     checkedValues[groupId] = [];
   }
-  emit('filterChange', checkedValues);
+  emit('filterChange', checkedValues, sortField.value);
 };
 
 // 具体选项变化
 const handleGroupChange = (groupId: string, value: string[]) => {
   // 更新全选状态
   allChecked[groupId] = value.length === optionIds[groupId]!.length;
-  emit('filterChange', checkedValues);
+  emit('filterChange', checkedValues, sortField.value);
 };
 
 // 重置筛选
 const resetFilters = () => {
+  // 重置排序字段
+  sortField.value = '';
   // 品牌
   if (optionIds['brands']) {
     checkedValues['brands'] = optionIds['brands'];
@@ -162,7 +179,12 @@ const resetFilters = () => {
       allChecked[property.id] = true;
     }
   });
-  emit('filterChange', checkedValues);
+  emit('filterChange', checkedValues, sortField.value);
+};
+
+// 排序变化
+const handleSortChange = (value: string) => {
+  emit('filterChange', checkedValues, value);
 };
 
 onMounted(() => {
@@ -177,7 +199,6 @@ onMounted(() => {
 
 .filter-collapse {
   width: 100%;
-  margin-bottom: 15px;
 
   :deep(.el-collapse-item__header) {
     font-size: 14px;
@@ -220,5 +241,16 @@ onMounted(() => {
   :deep(.el-checkbox__input.is-checked + .el-checkbox__label) {
     color: var(--theme-color);
   }
+}
+
+.sort-radio {
+  width: 100%;
+  background: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+.reset-btn {
+  margin-left: 10px;
 }
 </style>

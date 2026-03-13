@@ -1,6 +1,10 @@
 import request from '../services/api';
 import type { CategoryResult } from '../types/category';
-import type { ProductDetailResult } from '../types/subcategory';
+import type {
+  PaginatedResult,
+  ProductDetailResult,
+  ProductFilterParams,
+} from '../types/subcategory';
 
 // 获取首页新鲜好物
 export function getCategoryApi(id: string) {
@@ -18,4 +22,9 @@ export function getSubCategoryApi(id: string) {
       id,
     },
   });
+}
+
+// 获取首页新鲜好物
+export function getGoodsListApi(params: ProductFilterParams) {
+  return request.post<PaginatedResult>('/category/goods/temporary', params);
 }

@@ -43,7 +43,7 @@
             >
               <el-row class="section-header" justify="space-between">
                 <h4 class="section-title">{{ child.name }}</h4>
-                <el-link :href="`/category/sub/${child.id}`" underline="never">
+                <el-link :href="`/subCategory/${child.id}`" underline="never">
                   查看更多 <el-icon><Right /></el-icon>
                 </el-link>
               </el-row>
