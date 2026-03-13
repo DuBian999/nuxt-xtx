@@ -2,6 +2,38 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+  // 配置默认title
+  app: {
+    head: {
+      title: '小兔鲜儿 - 优质商品，放心购物',
+      meta: [
+        {
+          name: 'description',
+          content:
+            '基于Nuxt服务端渲染的电商平台，模拟真实购物场景，提供优质商品，享受放心购物体验。',
+        },
+        {
+          name: 'keywords',
+          content: 'Nuxt,小兔鲜儿,电商,购物,商品,优惠,正品',
+        },
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1.0',
+        },
+        {
+          name: 'robots',
+          content: 'index, follow',
+        },
+      ],
+      link: [
+        {
+          rel: 'icon',
+          type: 'image/x-icon',
+          href: '/favicon.ico',
+        },
+      ],
+    },
+  },
   runtimeConfig: {
     // 服务端环境变量
     apiSecret: process.env.NUXT_API_SECRET,
